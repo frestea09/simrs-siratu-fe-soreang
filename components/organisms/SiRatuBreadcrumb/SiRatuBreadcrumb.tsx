@@ -1,4 +1,3 @@
-// components/organisms/Breadcrumb.tsx
 import Link from "next/link";
 import { SlashIcon } from "lucide-react";
 import {
@@ -8,7 +7,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"; // Pastikan path sesuai
+} from "@/components/ui/breadcrumb";
 import { BreadcrumbProps } from "./SiRatuBreadcrumb.interface";
 
 export const SiRatuBreadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
