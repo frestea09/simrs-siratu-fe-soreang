@@ -38,6 +38,8 @@
     "@storybook/addon-a11y": "^9.0.18",
     "@storybook/addon-docs": "^9.0.18",
     "@storybook/addon-onboarding": "^9.0.18",
+    "@storybook/addon-styling-webpack": "^2.0.0",
+    "@storybook/addon-themes": "^9.0.18",
     "@storybook/addon-vitest": "^9.0.18",
     "@storybook/nextjs-vite": "^9.0.18",
     "@tailwindcss/postcss": "^4",
