@@ -9,4 +9,5 @@ export type ButtonProps = {
   loading?: boolean;
   fullWidth?: boolean;
   ariaLabel?: string;
+  className?: string;
 };
