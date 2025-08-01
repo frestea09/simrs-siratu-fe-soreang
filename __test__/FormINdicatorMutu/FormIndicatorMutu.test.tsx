@@ -1,5 +1,5 @@
 // __tests__/FormIndicatorMutu.test.tsx
-import FormIndicatorMutu from "@/components/organisms/FormIndicatorMutu/FormINdicatorMutu";
+import FormIndicatorMutu from "@/components/organisms/FormIndicatorMutu/FormIndicatorMutu";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
