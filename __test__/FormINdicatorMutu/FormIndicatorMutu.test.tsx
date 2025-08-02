@@ -1,8 +1,6 @@
 // __tests__/FormIndicatorMutu.test.tsx
-import FormIndicatorMutu from "@/components/organisms/FormIndicatorMutu/FormINdicatorMutu";
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { act } from "react-dom/test-utils";
+import FormIndicatorMutu from "@/components/organisms/FormIndicatorMutu/FormIndicatorMutu";
+import { render, screen } from "@testing-library/react";
 
 // Mock console.log
 jest.spyOn(console, "log").mockImplementation(() => {});
@@ -13,5 +11,8 @@ describe("FormIndicatorMutu", () => {
 
     // Check if all input fields are present
     expect(screen.getByLabelText(/Nama Indikator/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Numerator/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Denominator/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Hasil Capaian/i)).toBeInTheDocument();
   });
 });

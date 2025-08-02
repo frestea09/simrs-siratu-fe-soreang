@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import DatePicker from "@/components/atoms/datepicker/datepicker";
 import { MyInput } from "@/components/atoms/input/input";
 import Button from "@/components/atoms/mybutton/MyButton";
@@ -11,15 +12,33 @@ const MyForm = () => {
     handleSubmit,
     formState: { errors },
     setValue,
+    watch,
   } = useForm({
     defaultValues: {
       name: "",
       jenisIndikator: "All",
       date: "",
       standarCapaian: 0,
-      denumerator: 0,
+      numerator: 0,
+      denominator: 0,
+      hasilCapaian: 0,
     },
   });
+
+  const numerator = watch("numerator");
+  const denominator = watch("denominator");
+
+  React.useEffect(() => {
+    if (denominator && Number(denominator) !== 0) {
+      const hasil = (Number(numerator) / Number(denominator)) * 100;
+      setValue(
+        "hasilCapaian",
+        Number.isFinite(hasil) ? parseFloat(hasil.toFixed(2)) : 0,
+      );
+    } else {
+      setValue("hasilCapaian", 0);
+    }
+  }, [numerator, denominator, setValue]);
 
   const onSubmit = (data: any) => {
     console.log(data);
@@ -99,17 +118,46 @@ const MyForm = () => {
           )}
         />
         <Controller
-          name="denumerator"
+          name="numerator"
           control={control}
-          rules={{ required: "Denumerator is required" }} // Menambahkan validasi required
+          rules={{ required: "Numerator is required" }}
           render={({ field }) => (
             <MyInput
-              label="Denumerator"
+              label="Numerator"
               {...field}
-              placeholder="Masukkan Denumerator"
+              placeholder="Masukkan Numerator"
               type="number"
               value={`${field.value}`}
-              error={errors.denumerator?.message}
+              error={errors.numerator?.message}
+            />
+          )}
+        />
+        <Controller
+          name="denominator"
+          control={control}
+          rules={{ required: "Denominator is required" }}
+          render={({ field }) => (
+            <MyInput
+              label="Denominator"
+              {...field}
+              placeholder="Masukkan Denominator"
+              type="number"
+              value={`${field.value}`}
+              error={errors.denominator?.message}
+            />
+          )}
+        />
+        <Controller
+          name="hasilCapaian"
+          control={control}
+          render={({ field }) => (
+            <MyInput
+              label="Hasil Capaian"
+              {...field}
+              type="number"
+              placeholder="0"
+              value={`${field.value}`}
+              disabled
             />
           )}
         />
